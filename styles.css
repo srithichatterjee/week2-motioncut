@@ -1,0 +1,160 @@
+/* Container to ensure the items are centrally aligned */
+.slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 80%; /* Adjust width as needed */
+    height: 500px; /* Adjust height as needed */
+    margin-top: 40px;
+    margin: auto; /* Center the slider */
+    position: relative; /* Relative positioning for buttons */
+}
+
+/* Styling for the individual items */
+.item {
+    width: 30%; /* Adjust size as needed */
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.5s ease;
+    opacity: 0.6; /* Default opacity */
+    transform: scale(0.8) perspective(1000px) rotateY(0deg); /* Default scale for non-active items */
+    position: absolute;
+}
+
+.item.active {
+    transform: scale(1.1) perspective(1000px) rotateY(0deg); /* Scale up the active item */
+    opacity: 1;
+    height:100%;
+    z-index: 1; /* Ensure the active item is on top */
+}
+
+/* Additional classes for tilting left and right items */
+.item.left {
+    transform: translateX(-120%) scale(0.9) perspective(1000px) rotateY(85deg); /* Tilt left */
+    opacity: 0.6; /* Add blur effect */
+    z-index: 0;
+}
+
+.item.right {
+    transform: translateX(120%) scale(0.3) perspective(1000px) rotateY(-85deg); /* Tilt right */
+    opacity: 0.3; /* Add blur effect */
+    z-index: 0;
+}
+
+/* Navigation buttons */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0);
+    
+    color: black;
+    font-size: 30px; 
+    font-weight: bold;
+    border:none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2; /* Ensure buttons are above items */
+}
+
+.caption {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+body
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 175px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .item {
+        width: 40%; /* Increase width for larger screens */
+        transform: scale(0.85) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.active {
+        transform: scale(1.15) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.left {
+        transform: translateX(-110%) scale(0.95) perspective(1000px) rotateY(15deg);
+    }
+
+    .item.right {
+        transform: translateX(110%) scale(0.95) perspective(1000px) rotateY(-15deg);
+    }
+}
+
+@media (max-width: 992px) {
+    .item {
+        width: 50%; /* Increase width for tablets */
+        transform: scale(0.8) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.active {
+        transform: scale(1.1) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.left {
+        transform: translateX(-100%) scale(0.9) perspective(1000px) rotateY(15deg);
+    }
+
+    .item.right {
+        transform: translateX(100%) scale(0.9) perspective(1000px) rotateY(-15deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .item {
+        width: 60%; /* Increase width for smaller tablets */
+        transform: scale(0.75) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.active {
+        transform: scale(1.05) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.left {
+        transform: translateX(-90%) scale(0.85) perspective(1000px) rotateY(15deg);
+    }
+
+    .item.right {
+        transform: translateX(90%) scale(0.85) perspective(1000px) rotateY(-15deg);
+    }
+}
+
+@media (max-width: 576px) {
+    .item {
+        width: 70%; /* Increase width for small screens */
+        transform: scale(0.7) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.active {
+        transform: scale(1) perspective(1000px) rotateY(0deg);
+    }
+
+    .item.left {
+        transform: translateX(-80%) scale(0.8) perspective(1000px) rotateY(15deg);
+    }
+
+    .item.right {
+        transform: translateX(80%) scale(0.8) perspective(1000px) rotateY(-15deg);
+    }
+}
